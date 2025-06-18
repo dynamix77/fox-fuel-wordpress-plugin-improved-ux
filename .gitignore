@@ -1,0 +1,8 @@
+.DS_Store
+*.log
+*.zip
+*.bak
+node_modules/
+vendor/
+uploads/
+

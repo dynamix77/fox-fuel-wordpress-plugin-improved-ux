@@ -1,0 +1,751 @@
+/* Accessibility Improvements */
+
+/* Focus States for Keyboard Navigation */
+.fox-fuel-btn-primary:focus,
+.fox-fuel-btn-secondary:focus,
+.fox-fuel-btn-ghost:focus,
+.fox-fuel-btn-next:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(0, 95, 204, 0.3);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+    border-color: var(--fox-fuel-red);
+    box-shadow: 0 0 0 3px rgba(0, 95, 204, 0.3);
+}
+
+.checkbox-group input[type="checkbox"]:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(0, 95, 204, 0.3);
+}
+
+/* Screen Reader Only Content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Skip Link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--fox-fuel-blue);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .fox-fuel-btn-primary {
+        border: 2px solid white;
+    }
+    
+    .fox-fuel-plan-card {
+        border: 2px solid black;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .fox-fuel-btn-primary,
+    .fox-fuel-btn-secondary,
+    .fox-fuel-btn-ghost,
+    .fox-fuel-btn-next,
+    .fox-fuel-plan-card,
+    .checkbox-group label,
+    .progress-fill,
+    .step-indicator {
+        transition: none;
+    }
+    
+    .fox-fuel-spinner {
+        animation: none;
+    }
+}/**
+ * Fox Fuel Selector Styles
+ * Updated with improved UX flow and trust-building design
+ */
+
+/* Fox Fuel Brand Colors */
+:root {
+    --fox-fuel-red: #BE1E2D;
+    --fox-fuel-blue: #045783;
+    --fox-fuel-light-gray: #E4E2E2;
+    --fox-fuel-white: #FFFFFF;
+    --fox-fuel-success: #28a745;
+    --fox-fuel-warning: #ffc107;
+    --fox-fuel-error: #dc3545;
+    --fox-fuel-text: #333333;
+    --fox-fuel-text-light: #666666;
+    --fox-fuel-border: #dddddd;
+    --fox-fuel-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --fox-fuel-shadow-lg: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Container */
+.fox-fuel-selector-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--fox-fuel-text);
+}
+
+/* Loading State */
+.fox-fuel-loading {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.fox-fuel-spinner {
+    border: 4px solid var(--fox-fuel-light-gray);
+    border-top: 4px solid var(--fox-fuel-red);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Header */
+.fox-fuel-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.fox-fuel-logo img {
+    max-height: 60px;
+    margin-bottom: 20px;
+}
+
+.fox-fuel-header h1 {
+    color: var(--fox-fuel-blue);
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+.fox-fuel-subtitle {
+    color: var(--fox-fuel-text-light);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Form Steps */
+.fox-fuel-step {
+    background: var(--fox-fuel-white);
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: var(--fox-fuel-shadow);
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.step-number {
+    background: var(--fox-fuel-red);
+    color: var(--fox-fuel-white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.step-header h2 {
+    color: var(--fox-fuel-blue);
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.recommendations-intro {
+    color: var(--fox-fuel-text-light);
+    margin: 0;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--fox-fuel-text);
+    position: relative;
+}
+
+.step-description {
+    color: var(--fox-fuel-text-light);
+    font-size: 0.95rem;
+    margin: 0;
+    font-style: italic;
+}
+
+/* Tooltip Styling */
+.tooltip-icon {
+    display: inline-block;
+    margin-left: 5px;
+    cursor: help;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.tooltip-icon:hover {
+    opacity: 1;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--fox-fuel-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--fox-fuel-red);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Checkbox Groups */
+.checkbox-group {
+    display: grid;
+    gap: 12px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: flex-start;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 16px;
+    border: 2px solid var(--fox-fuel-border);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin: 0 12px 0 0;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.priority-content {
+    flex-grow: 1;
+}
+
+.priority-title {
+    font-weight: 600;
+    color: var(--fox-fuel-text);
+    margin-bottom: 4px;
+    display: block;
+}
+
+.priority-desc {
+    font-size: 0.9rem;
+    color: var(--fox-fuel-text-light);
+    font-weight: 400;
+    line-height: 1.3;
+    display: block;
+}
+
+.checkbox-group label:hover {
+    border-color: var(--fox-fuel-red);
+    background-color: #fff5f5;
+}
+
+
+
+/* Buttons - Standardized Styling */
+.fox-fuel-btn-primary,
+.fox-fuel-btn-secondary,
+.fox-fuel-btn-ghost,
+.fox-fuel-btn-next {
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    border: 2px solid transparent;
+    min-width: 150px;
+    height: 48px;
+    line-height: 1.2;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.fox-fuel-btn-primary {
+    background: var(--fox-fuel-red);
+    color: var(--fox-fuel-white);
+    border-color: var(--fox-fuel-red);
+}
+
+.fox-fuel-btn-primary:hover {
+    background: #a01925;
+    border-color: #a01925;
+    transform: translateY(-1px);
+    box-shadow: var(--fox-fuel-shadow);
+}
+
+.fox-fuel-btn-secondary {
+    background: var(--fox-fuel-white);
+    color: var(--fox-fuel-red);
+    border-color: var(--fox-fuel-red);
+}
+
+.fox-fuel-btn-secondary:hover {
+    background: var(--fox-fuel-red);
+    color: var(--fox-fuel-white);
+}
+
+.fox-fuel-btn-ghost {
+    background: transparent;
+    color: var(--fox-fuel-text-light);
+    border-color: var(--fox-fuel-border);
+}
+
+.fox-fuel-btn-ghost:hover {
+    color: var(--fox-fuel-text);
+    border-color: var(--fox-fuel-text-light);
+}
+
+.fox-fuel-btn-next {
+    background: var(--fox-fuel-blue);
+    color: var(--fox-fuel-white);
+    border-color: var(--fox-fuel-blue);
+}
+
+.fox-fuel-btn-next:hover {
+    background: #034066;
+    border-color: #034066;
+}
+
+/* Plan Cards */
+.fox-fuel-plans-container {
+    display: grid;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.fox-fuel-plan-card {
+    background: var(--fox-fuel-white);
+    border: 2px solid var(--fox-fuel-border);
+    border-radius: 12px;
+    padding: 30px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.fox-fuel-plan-card:hover {
+    border-color: var(--fox-fuel-red);
+    box-shadow: var(--fox-fuel-shadow-lg);
+    transform: translateY(-2px);
+}
+
+.fox-fuel-plan-card.recommended {
+    border-color: var(--fox-fuel-red);
+    box-shadow: var(--fox-fuel-shadow-lg);
+}
+
+.fox-fuel-plan-card.selected {
+    border-color: var(--fox-fuel-success);
+    background-color: #f8fff9;
+}
+
+.recommendation-badge {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--fox-fuel-red);
+    color: var(--fox-fuel-white);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.plan-badge {
+    background: var(--fox-fuel-blue);
+    color: var(--fox-fuel-white);
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.plan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.plan-header h3 {
+    color: var(--fox-fuel-blue);
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.plan-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--fox-fuel-red);
+}
+
+.plan-description {
+    color: var(--fox-fuel-text-light);
+    margin-bottom: 15px;
+}
+
+.plan-payment {
+    margin-bottom: 20px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+}
+
+.plan-features li {
+    padding: 8px 0;
+    color: var(--fox-fuel-text);
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.plan-features li:last-child {
+    border-bottom: none;
+}
+
+.plan-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* IMPROVED CONTACT SECTION - VALUE FIRST UX */
+.fox-fuel-contact-section {
+    background: linear-gradient(135deg, #f8fff9 0%, #e8f7ea 100%);
+    border: 2px solid var(--fox-fuel-success);
+    border-radius: 12px;
+    padding: 40px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.contact-intro {
+    margin-bottom: 30px;
+}
+
+.contact-intro h3 {
+    color: var(--fox-fuel-blue);
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.contact-intro p {
+    color: var(--fox-fuel-text);
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+.no-pressure {
+    color: var(--fox-fuel-text-light);
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+.contact-toggle {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.fox-fuel-contact-form {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--fox-fuel-white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: var(--fox-fuel-shadow);
+}
+
+.fox-fuel-contact-form h4 {
+    color: var(--fox-fuel-blue);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Thank You Messages */
+.fox-fuel-thank-you-simple {
+    background: linear-gradient(135deg, #fff5e6 0%, #ffecd1 100%);
+    border: 2px solid var(--fox-fuel-warning);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.fox-fuel-thank-you-simple h3 {
+    color: var(--fox-fuel-blue);
+    margin-bottom: 15px;
+}
+
+.fox-fuel-thank-you-simple p {
+    margin-bottom: 10px;
+}
+
+.fox-fuel-thank-you-simple em {
+    color: var(--fox-fuel-text-light);
+}
+
+.fox-fuel-thank-you-simple ul {
+    text-align: left;
+    max-width: 300px;
+    margin: 15px auto;
+    padding: 0;
+    list-style: none;
+}
+
+.fox-fuel-thank-you-simple li {
+    padding: 5px 0;
+    position: relative;
+    padding-left: 20px;
+}
+
+.fox-fuel-thank-you-simple li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--fox-fuel-success);
+    font-weight: bold;
+}
+
+/* Progress Bar */
+.fox-fuel-progress-bar {
+    margin: 30px 0;
+    position: relative;
+    background: var(--fox-fuel-light-gray);
+    height: 4px;
+    border-radius: 2px;
+}
+
+.progress-fill {
+    height: 4px;
+    background: var(--fox-fuel-red);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+    width: 0%;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.step-indicator {
+    font-size: 0.9rem;
+    color: var(--fox-fuel-text-light);
+    font-weight: 500;
+    position: relative;
+    padding: 8px 12px;
+    border-radius: 20px;
+    background: var(--fox-fuel-light-gray);
+    transition: all 0.3s ease;
+}
+
+.step-indicator.active {
+    color: var(--fox-fuel-white);
+    background: var(--fox-fuel-red);
+}
+
+.step-indicator.completed {
+    color: var(--fox-fuel-white);
+    background: var(--fox-fuel-success);
+}
+
+/* Error Messages */
+.fox-fuel-error {
+    background: #fff5f5;
+    border: 1px solid var(--fox-fuel-error);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.fox-fuel-error p {
+    color: var(--fox-fuel-error);
+    margin: 0;
+    font-weight: 500;
+}
+
+.zip-error {
+    background: #fff5f5;
+    border: 1px solid var(--fox-fuel-error);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.zip-error p {
+    color: var(--fox-fuel-error);
+    margin: 0;
+}
+
+/* Footer */
+.fox-fuel-footer {
+    text-align: center;
+    padding: 30px 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 40px;
+}
+
+.fox-fuel-footer p {
+    margin: 5px 0;
+    color: var(--fox-fuel-text-light);
+}
+
+.fox-fuel-footer a {
+    color: var(--fox-fuel-red);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.fox-fuel-footer a:hover {
+    text-decoration: underline;
+}
+
+.service-area {
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .fox-fuel-selector-container {
+        padding: 15px;
+    }
+    
+    .fox-fuel-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .fox-fuel-step {
+        padding: 25px 20px;
+    }
+    
+    .step-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .step-number {
+        margin-right: 0;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .plan-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .plan-actions {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-toggle {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .progress-steps {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .fox-fuel-selector-container {
+        padding: 10px;
+    }
+    
+    .fox-fuel-step {
+        padding: 20px 15px;
+    }
+    
+    .fox-fuel-contact-form {
+        padding: 20px;
+    }
+}
